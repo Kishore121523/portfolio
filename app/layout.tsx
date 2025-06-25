@@ -1,7 +1,10 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from 'next/font/google';
+import gsap from "gsap";
+import { ScrollTrigger, SplitText } from "gsap/all";
 
-import "./globals.css";
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600'] });
 
