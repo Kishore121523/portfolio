@@ -29,11 +29,11 @@ export default function Hero() {
       if (width < 640) newBgY = "center";
       else if (width < 1300) newBgY = "center";
       else if (width < 1400) newBgY = "calc(50% - 20px)"
-      else if (width < 1500) newBgY = "calc(50% - 95px)"
+      else if (width < 1500) newBgY = "calc(50% - 60px)"
       else if (width < 1600) newBgY = "calc(50% - 70px)";
       else if (width < 1700) newBgY = "calc(50% - 90px)";
       else if (width < 1800) newBgY = "calc(50% - 120px)";
-      else newBgY = "calc(50% - 180px)";
+      else newBgY = "calc(50% - 140px)";
       
       setBgY(newBgY);
     };
@@ -50,8 +50,8 @@ export default function Hero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=150%",
-          scrub: true,
+          end: "+=400%",
+          scrub: 0.6,
           pin: true,
           anticipatePin: 1,
         },
@@ -65,35 +65,50 @@ export default function Hero() {
         maskComposite: "exclude",
       });
 
-
       // 2. Fade out background
       tl.to(bgLayerRef.current, {
         opacity: 0,
         duration: 1,
-        ease: "power2.out",
+        ease: "power3.inOut",
       });
 
       // 3. Expand mask hole
       tl.to(centerRef.current, {
-        WebkitMaskImage: "radial-gradient(ellipse 180px 300px at center, transparent 100px, black 100px)",
-        maskImage: "radial-gradient(ellipse 180px 300px at center, transparent 100px, black 100px)",
-        duration: 1.4,
-        ease: "power3.inOut",
-      }, "-=0.6");
+        WebkitMaskImage: "radial-gradient(ellipse 250px 400px at center, transparent 140px, black 140px)",
+        maskImage: "radial-gradient(ellipse 250px 400px at center, transparent 140px, black 140px)",
+        duration: 1.6,
+        ease: "power2.inOut",
+      }, "-=0.7");
 
       // 4. Slide out sides
       tl.to([leftRef.current, rightRef.current], {
         y: "-120%",
-        duration: 1.6,
-        ease: "power3.inOut",
-      }, ">-1.3");
+        duration: 1.8,
+        ease: "power2.inOut",
+      }, ">-1.4");
 
-      // 5. Scale center up
+      // 5. Fade out hero text + socials before zoom
+      tl.to(["#hero-name", "#hero-socials"], {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.in",
+      }, "<+0.2");
+
+      tl.to("#content-border", {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.inOut",
+      }, ">-0.5");
+
+      // 6. Scale center up
       tl.to(contentRef.current, {
         scale: 20,
-        duration: 2,
-        ease: "expo.in",
-      }, ">-0.4");
+        duration: 2.2,
+        ease: "power4.in",
+      }, ">-0.3");
+
+      tl.add("heroRevealDone");
+
     }, containerRef);
 
     return () => ctx.revert();
@@ -117,6 +132,7 @@ export default function Hero() {
         ref={contentRef}
         className="w-full max-w-[95%] h-[90%] flex flex-col items-center justify-center rounded-2xl relative overflow-hidden z-10"
       >
+
         <div
           ref={bgLayerRef}
           className="absolute inset-0 z-0 bg-no-repeat bg-center bg-cover"
@@ -145,12 +161,12 @@ export default function Hero() {
           ))}
         </div>
 
-        <div className="text-white absolute bottom-[1.5rem] right-[1.5rem] z-20">
+        <div id="hero-name" className="text-white absolute bottom-[1.5rem] right-[1.5rem] z-20">
           <p className=" font-bold text-[4rem] sm:text-[6rem] md:text-[8rem]">Kishore</p> 
           <p className="text-[2rem] text-right md:mt-[-2.4rem]">portfolio.</p>
         </div>
 
-        <div className="flex flex-col text-white absolute bottom-[2rem] left-[1.5rem] z-20 gap-6">
+        <div id="hero-socials" className="flex flex-col text-white absolute bottom-[2rem] left-[1.5rem] z-20 gap-6">
           <a
             href="https://github.com/Kishore121523"
             target="_blank"

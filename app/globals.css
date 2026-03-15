@@ -2,11 +2,84 @@
 
 :root {
   --background: #151515;
-  /* --foreground: #ededed; */
   --foreground: #f8f5ef;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+}
+
+/* Hide default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Smooth scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Marquee animation for skills */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Animated gradient border shift */
+@keyframes borderShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Code rain for focus card */
+@keyframes codeRain {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(300%); opacity: 0; }
+}
+
+.animate-codeRain {
+  animation: codeRain 4s linear infinite;
+}
+
+/* Tech marquee ticker */
+@keyframes marqueeTech {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-tech {
+  animation: marqueeTech 20s linear infinite;
+}
+
+/* Slow spin for wireframe globe */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 25s linear infinite;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(253, 230, 138, 0.3);
+  color: #f8f5ef;
 }
