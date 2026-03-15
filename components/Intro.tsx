@@ -330,54 +330,54 @@ export default function HeroIntroText() {
 
       // ── Phase 3: Editorial content appears ──
       tl.to(contentRef.current, {
-        autoAlpha: 1, duration: 0.3, ease: "power2.out",
-      }, "moveToLeft+=2");
+        autoAlpha: 1, duration: 0.5, ease: "power2.out",
+      }, "moveToLeft+=3");
 
       // Big statement lines slide in
       tl.fromTo(".hero-line-1", {
         x: -200, opacity: 0, skewX: -8,
       }, {
         x: 0, opacity: 1, skewX: 0,
-        duration: 1.2, ease: "power3.out",
-      }, "moveToLeft+=2.1");
+        duration: 2, ease: "power3.out",
+      }, "moveToLeft+=3.2");
 
       tl.fromTo(".hero-line-2", {
         x: 200, opacity: 0, skewX: 8,
       }, {
         x: 0, opacity: 1, skewX: 0,
-        duration: 1.2, ease: "power3.out",
-      }, "moveToLeft+=2.3");
+        duration: 2, ease: "power3.out",
+      }, "moveToLeft+=4");
 
       tl.fromTo(".hero-line-3", {
         x: -150, opacity: 0, skewX: -5,
       }, {
         x: 0, opacity: 1, skewX: 0,
-        duration: 1.2, ease: "power3.out",
-      }, "moveToLeft+=2.5");
+        duration: 2, ease: "power3.out",
+      }, "moveToLeft+=4.8");
 
       // Scattered elements float in
       tl.fromTo(".scatter-el", {
         opacity: 0, scale: 0.5, rotation: "random(-30, 30)",
       }, {
         opacity: 1, scale: 1, rotation: 0,
-        duration: 0.8, stagger: 0.08, ease: "back.out(1.4)",
-      }, "moveToLeft+=2.4");
+        duration: 1.2, stagger: 0.15, ease: "back.out(1.4)",
+      }, "moveToLeft+=4.5");
 
       // Social links slide up
       tl.fromTo(".social-float", {
         y: 40, opacity: 0,
       }, {
         y: 0, opacity: 1,
-        duration: 0.6, stagger: 0.06, ease: "power3.out",
-      }, "moveToLeft+=2.8");
+        duration: 1, stagger: 0.12, ease: "power3.out",
+      }, "moveToLeft+=5.5");
 
       // Wireframe globe spin in
       tl.fromTo(".wireframe-globe", {
         scale: 0, rotation: -180, opacity: 0,
       }, {
         scale: 1, rotation: 0, opacity: 1,
-        duration: 1.4, ease: "power3.out",
-      }, "moveToLeft+=2.3");
+        duration: 2, ease: "power3.out",
+      }, "moveToLeft+=4");
 
       // Tech grid glitch in
       tl.fromTo(".tech-grid-item", {
@@ -386,16 +386,16 @@ export default function HeroIntroText() {
       }, {
         opacity: 1, y: "random(-2, 2)", skewX: "random(-3, 3)",
         textShadow: "none",
-        duration: 0.6, stagger: 0.04, ease: "power2.out",
-      }, "moveToLeft+=2.5");
+        duration: 1, stagger: 0.08, ease: "power2.out",
+      }, "moveToLeft+=5");
 
       // Crosshair targets
       tl.fromTo(".crosshair", {
         scale: 3, opacity: 0,
       }, {
         scale: 1, opacity: 0.2,
-        duration: 0.8, stagger: 0.15, ease: "power2.out",
-      }, "moveToLeft+=2.5");
+        duration: 1.2, stagger: 0.2, ease: "power2.out",
+      }, "moveToLeft+=5");
 
     }, introRef);
 

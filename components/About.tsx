@@ -12,39 +12,46 @@ const scrambleChars = "!<>-_\\/[]{}—=+*^?#アイウエオカキク";
 const circles = [
   {
     label: "APPROACH",
-    text: "Listen, explore, and engineer — building from real problems, not assumptions.",
+    text: "Understand the mess. Untangle it. Ship it clean. Pretend it was obvious.",
   },
   {
     label: "CRAFT",
-    text: "From model architecture to pixel-level polish, every layer gets the same obsessive attention.",
+    text: "From model weights to font weights - every detail gets the same unhealthy attention.",
   },
   {
     label: "VISION",
-    text: "AI that feels human. Interfaces that feel alive. Systems that just work.",
+    text: "AI that actually works. Interfaces that don't suck. Deadlines that... we'll get there.",
   },
 ];
 
 const bioBlock = {
   tag: "SYS.LOG",
   lines: [
-    "// engineer at the edge of AI & design",
-    "// I don't just build interfaces —",
-    "// I make machines think and pixels breathe.",
+    "// fluent in Python, TypeScript & PromptScript😛",
+    "// builds full-stack apps & half-stack excuses",
+    "// ships AI that works (most of the time)",
   ],
 };
 
-const metricsBlock = {
-  tag: "METRICS",
-  stats: [
-    { value: "4+", label: "YRS" },
-    { value: "20+", label: "SHIPS" },
-    { value: "∞", label: "LOOPS" },
-  ],
-};
+const devPuns = [
+  "Trained a model. It trained me back.",
+  "Can explain transformers, not my life choices",
+  "Overfitting to deadlines since 2024.",
+  "git commit -m 'it works, don't ask why'",
+  "Gradient descent into madness.",
+  "Deploying to prod on a Friday. Again.",
+  "My model's confidence is higher than mine.",
+  "Works in localhost. Ships in hopelost.",
+  "My RAG pipeline retrieves everything except my sanity.",
+  "Fine-tuned the model. Broke everything else.",
+  "99.9% accuracy. 100% overfit.",
+  "The AI passed the test. I didn't.",
+  "My vector db remembers more than I do.",
+];
 
 const stackBlock = {
   tag: "STACK.NOW",
-  items: ["Next.js", "Python", "LLMs", "FastAPI", "LangChain", "RAG"],
+  items: ["Python", "TypeScript", "Next.js", "LangChain", "VectorDB"],
 };
 
 
@@ -52,6 +59,8 @@ const stackBlock = {
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
+  const [punIndex, setPunIndex] = useState(0);
+  const punRef = useRef<HTMLSpanElement>(null);
   const infoRefs = useRef<(HTMLDivElement | null)[]>([]);
   const tagRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
@@ -118,6 +127,18 @@ export default function About() {
     return () => clearInterval(id);
   }, [scrambleText]);
 
+  // Rotate dev puns with scramble effect
+  useEffect(() => {
+    const id = setInterval(() => {
+      setPunIndex((prev) => {
+        const next = (prev + 1) % devPuns.length;
+        if (punRef.current) scrambleText(punRef.current, devPuns[next], 0.8);
+        return next;
+      });
+    }, 3500);
+    return () => clearInterval(id);
+  }, [scrambleText]);
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       // ── Words fly in ──
@@ -159,9 +180,9 @@ export default function About() {
       const preTl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 90%",
-          end: "top 10%",
-          scrub: 0.4,
+          start: "top 95%",
+          end: "top 5%",
+          scrub: 0.5,
         },
       });
 
@@ -169,29 +190,34 @@ export default function About() {
       words.forEach((word, i) => {
         preTl.to(word, {
           autoAlpha: 1, x: 0, y: 0, rotation: 0,
-          duration: 0.3, ease: "back.out(1.2)",
-        }, 0.05 + i * 0.05);
+          duration: 0.5, ease: "back.out(1.2)",
+        }, 0.05 + i * 0.08);
       });
 
       // Left panel items scatter in
       leftItems.forEach((el, i) => {
         preTl.to(el, {
           autoAlpha: 1, x: 0, y: 0, rotation: 0, scale: 1,
-          duration: 0.35, ease: "back.out(1.4)",
-        }, 0.15 + i * 0.04);
+          duration: 0.5, ease: "back.out(1.4)",
+        }, 0.25 + i * 0.08);
       });
 
       // Decorative elements
       preTl.to(".about-deco", {
         autoAlpha: 1, scale: 1, rotation: 0,
-        duration: 0.4, stagger: 0.03, ease: "elastic.out(1, 0.6)",
-      }, 0.2);
+        duration: 0.5, stagger: 0.05, ease: "elastic.out(1, 0.6)",
+      }, 0.35);
+
+      // Strikethrough draws across after words land
+      preTl.to(".strike-line", {
+        width: "100%", duration: 0.4, ease: "power2.inOut",
+      }, 0.8);
 
       // First circle slides in during pre-pin
       preTl.to(circleEls[0], {
         autoAlpha: 1, y: 0, scale: 1,
-        duration: 0.5, ease: "power2.out",
-      }, 0.4);
+        duration: 0.6, ease: "power2.out",
+      }, 0.6);
 
       // ── Pinned timeline: remaining circles stack ──
       const tl = gsap.timeline({
@@ -259,26 +285,28 @@ export default function About() {
             <p className="text-[clamp(2.5rem,6vw,5.5rem)] font-extrabold leading-[1.05] tracking-tight">
               <span className="about-word inline-block text-white/30 font-extralight">How</span>{" "}
               <span className="about-word inline-block text-white/30 font-extralight">I</span>{" "}
-              <span className="about-word inline-block text-cyan-400 relative">
+              <span className="about-word inline-block text-emerald-400 relative">
                 think
-                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-cyan-400/50 to-transparent" />
+                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-emerald-400/50 to-transparent" />
               </span>
-              <span className="about-word inline-block text-white/15 text-[0.8em] font-mono">...</span>
-              <span className="about-word inline-block text-white/30 font-extralight">what</span>{" "}
+              <span className="about-word inline-block text-white/15 text-[0.8em] font-mono">.</span>
+              <span className="about-word inline-block text-white/30 font-extralight">What</span>{" "}
               <span className="about-word inline-block text-white/30 font-extralight">I</span>{" "}
-              <span className="about-word inline-block text-white">build</span>
+              <span className="about-word inline-block text-amber-100">ship</span>
               <span className="about-word inline-block text-white/15 text-[0.8em] font-mono">...</span>
               <br />
-              <span className="about-word inline-block text-white/30 font-extralight">why</span>{" "}
-              <span className="about-word inline-block text-white/30 font-extralight">it</span>{" "}
-              <span className="about-word inline-block italic font-light text-amber-100/60" style={{ fontFamily: "Georgia, serif" }}>matters</span>
+              <span className="about-word inline-block relative">
+                <span className="text-white/30 italic text-[1.15em]" style={{ fontFamily: "var(--font-caveat)" }}>don&apos;t ask why</span>
+                <span className="strike-line absolute left-2 top-1/2 h-[3px] w-0 mt-1"
+                  style={{ background: "rgba(0,240,255,0.5)", filter: "drop-shadow(0 0 6px rgba(0,240,255,0.4))" }} />
+              </span>
             </p>
           </div>
 
           {/* ── Scroll progress indicator ── */}
           <div className="about-deco absolute right-8 top-[14%] bottom-[14%] flex flex-col items-center">
             {/* Top dot */}
-            <div className="scroll-top-dot w-1.5 h-1.5 rounded-full bg-cyan-400/30 mb-3" />
+            <div className="scroll-top-dot w-1.5 h-1.5 rounded-full bg-emerald-400/30 mb-3" />
             {/* Track (dashed) */}
             <div className="flex-1 w-[1px] relative" style={{
               background: "repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 4px, transparent 4px, transparent 10px)",
@@ -330,7 +358,7 @@ export default function About() {
                     <span
                       ref={(el) => { tagRefs.current[0] = el; }}
                       data-text={bioBlock.tag}
-                      className="text-[8px] font-mono text-cyan-400/40 tracking-[0.3em] uppercase"
+                      className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase"
                     >
                       {bioBlock.tag}
                     </span>
@@ -340,20 +368,20 @@ export default function About() {
                     {bioBlock.lines.map((line, li) => (
                       <div key={li} className="flex gap-2">
                         <span className="text-white/10 select-none w-4 text-right shrink-0">{li + 1}</span>
-                        <span className="text-white/40">{line}</span>
+                        <span className="text-white/80">{line}</span>
                       </div>
                     ))}
                     <div className="flex gap-2 mt-0.5">
                       <span className="text-white/10 select-none w-4 text-right shrink-0">4</span>
-                      <span className="text-cyan-400/50 animate-pulse">▋</span>
+                      <span className="text-emerald-400/70 animate-pulse">▋</span>
                     </div>
                   </div>
                   {/* Corner accents */}
-                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-cyan-400/10" />
-                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-cyan-400/10" />
+                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-emerald-400/10" />
+                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-emerald-400/10" />
                 </div>
 
-                {/* ── Block 2: Metrics row ── */}
+                {/* ── Block 2: Rotating dev pun ── */}
                 <div
                   ref={(el) => { infoRefs.current[1] = el; }}
                   className="about-left-item mt-2.5 border border-white/[0.04] px-4 py-3 relative overflow-hidden group"
@@ -363,25 +391,17 @@ export default function About() {
                     style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,240,255,0.015) 2px, rgba(0,240,255,0.015) 4px)" }} />
                   <span
                     ref={(el) => { tagRefs.current[1] = el; }}
-                    data-text={metricsBlock.tag}
-                    className="text-[8px] font-mono text-cyan-400/40 tracking-[0.3em] uppercase block mb-2.5"
+                    data-text="DEV.LOG"
+                    className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-2"
                   >
-                    {metricsBlock.tag}
+                    DEV.LOG
                   </span>
-                  <div className="flex items-end justify-between">
-                    {metricsBlock.stats.map((stat, si) => (
-                      <div key={si} className="text-center flex-1 relative">
-                        {si > 0 && (
-                          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-6"
-                            style={{ background: "linear-gradient(to bottom, transparent, rgba(0,240,255,0.08), transparent)" }} />
-                        )}
-                        <span className="text-2xl md:text-3xl font-extralight text-white/80 font-mono">{stat.value}</span>
-                        <span className="block text-[8px] font-mono text-white/20 tracking-[0.25em] uppercase mt-1">{stat.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-cyan-400/10" />
-                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-cyan-400/10" />
+                  <p className="text-[12px] md:text-[13px] font-mono text-white/80 leading-relaxed">
+                    <span className="text-emerald-400/70 mr-1.5">&gt;</span>
+                    <span ref={punRef}>{devPuns[0]}</span>
+                  </p>
+                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-emerald-400/10" />
+                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-emerald-400/10" />
                 </div>
 
                 {/* ── Block 3: Stack ticker ── */}
@@ -395,59 +415,59 @@ export default function About() {
                   <span
                     ref={(el) => { tagRefs.current[2] = el; }}
                     data-text={stackBlock.tag}
-                    className="text-[8px] font-mono text-cyan-400/40 tracking-[0.3em] uppercase block mb-2"
+                    className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-2"
                   >
                     {stackBlock.tag}
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {stackBlock.items.map((item, ti) => (
-                      <span key={ti} className="text-[10px] md:text-[11px] font-mono text-white/50 border border-white/[0.06] px-2 py-0.5 hover:border-cyan-400/20 hover:text-cyan-400/60 transition-colors">
+                      <span key={ti} className="text-[10px] md:text-[11px] font-mono text-white/80 border border-white/[0.06] px-2 py-0.5 hover:border-emerald-400/20 hover:text-emerald-400/70 transition-colors">
                         {item}
                       </span>
                     ))}
                   </div>
-                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-cyan-400/10" />
-                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-cyan-400/10" />
+                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-emerald-400/10" />
+                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-emerald-400/10" />
                 </div>
 
                 {/* ── Block 4: Email + CV row ── */}
                 <div className="mt-2.5 flex gap-2.5">
                   <button
                     onClick={handleCopy}
-                    className="about-left-item flex-1 border border-white/[0.04] px-3 py-2.5 text-left relative overflow-hidden group hover:border-cyan-400/15 transition-colors"
+                    className="about-left-item flex-1 border border-white/[0.04] px-3 py-2.5 text-left relative overflow-hidden group hover:border-emerald-400/15 transition-colors"
                   >
-                    <span className="text-[8px] font-mono text-cyan-400/40 tracking-[0.3em] uppercase block mb-1">EMAIL</span>
-                    <span className="text-white/60 text-[10px] font-mono flex items-center gap-2">
+                    <span className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-1">EMAIL</span>
+                    <span className="text-white/80 text-[10px] font-mono flex items-center gap-2">
                       {copied ? (
-                        <span className="text-cyan-400">copied!</span>
+                        <span className="text-emerald-400">copied!</span>
                       ) : (
-                        <>kishore...<Copy className="w-2.5 h-2.5 text-white/25 group-hover:text-cyan-400/60 transition-colors" /></>
+                        <>kishore...<Copy className="w-2.5 h-2.5 text-white/80 group-hover:text-emerald-400/70 transition-colors" /></>
                       )}
                     </span>
-                    <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-cyan-400/10" />
+                    <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-emerald-400/10" />
                   </button>
                   <a
                     href="/Resume.pdf"
                     target="_blank"
                     rel="noreferrer"
-                    className="about-left-item flex-1 border border-white/[0.04] px-3 py-2.5 relative overflow-hidden group hover:border-cyan-400/15 transition-colors"
+                    className="about-left-item flex-1 border border-white/[0.04] px-3 py-2.5 relative overflow-hidden group hover:border-emerald-400/15 transition-colors"
                   >
-                    <span className="text-[8px] font-mono text-cyan-400/40 tracking-[0.3em] uppercase block mb-1">RESUME</span>
-                    <span className="text-white/60 text-[10px] font-mono flex items-center gap-2">
-                      .pdf<ArrowUpRight className="w-2.5 h-2.5 text-white/25 group-hover:text-cyan-400/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <span className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-1">RESUME</span>
+                    <span className="text-white/80 text-[10px] font-mono flex items-center gap-2">
+                      .pdf<ArrowUpRight className="w-2.5 h-2.5 text-white/80 group-hover:text-emerald-400/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </span>
-                    <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-cyan-400/10" />
+                    <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-emerald-400/10" />
                   </a>
                 </div>
 
                 {/* Decorative elements around left column */}
-                <div className="about-deco absolute -top-6 -right-8 w-10 h-10 border border-cyan-400/[0.04] rounded-full" />
+                <div className="about-deco absolute -top-6 -right-8 w-10 h-10 border border-emerald-400/[0.04] rounded-full" />
                 <div className="about-deco absolute -bottom-4 -left-4 w-[1px] h-8"
                   style={{ background: "linear-gradient(to bottom, rgba(0,240,255,0.08), transparent)" }} />
                 <div className="about-deco absolute top-1/2 -right-6">
-                  <div className="w-1 h-1 rounded-full bg-cyan-400/20" />
+                  <div className="w-1 h-1 rounded-full bg-emerald-400/20" />
                 </div>
-                <div className="about-deco absolute -bottom-6 right-8 text-[10px] font-mono text-cyan-400/[0.06] tracking-widest">
+                <div className="about-deco absolute -bottom-6 right-8 text-[10px] font-mono text-emerald-400/[0.06] tracking-widest">
                   {"{//}"}
                 </div>
               </div>
@@ -463,7 +483,7 @@ export default function About() {
                         boxShadow: "inset 0 0 80px rgba(0,240,255,0.015), 0 0 0 1px rgba(255,255,255,0.06), 0 0 40px rgba(0,240,255,0.01)",
                         border: "1px solid rgba(255,255,255,0.16)",
                       }}>
-                      <span className="absolute top-6 md:top-10 right-6 md:right-10 text-[10px] md:text-xs font-mono text-cyan-400/40">
+                      <span className="absolute top-6 md:top-10 right-6 md:right-10 text-[10px] md:text-xs font-mono text-emerald-400/70">
                         {String(i + 1).padStart(2, "0")}
                       </span>
 
@@ -473,7 +493,7 @@ export default function About() {
                       <span className="text-[9px] md:text-[13px] font-mono text-amber-100/70 tracking-[0.3em] uppercase mb-4">{c.label}</span>
                       <div className="w-8 md:w-12 h-[1px] mb-4"
                         style={{ background: "linear-gradient(90deg, rgba(0,240,255,0.15), rgba(253,230,138,0.2))" }} />
-                      <p className="text-[11px] md:text-[15px] text-white/60 leading-relaxed font-light max-w-[75%]">{c.text}</p>
+                      <p className="text-[11px] md:text-[16px] text-white/60 leading-relaxed font-light max-w-[100%]">{c.text}</p>
                     </div>
                   ))}
                 </div>
@@ -484,32 +504,36 @@ export default function About() {
                   </svg>
                 </div>
                 <div className="about-deco absolute -bottom-3 right-4">
-                  <div className="w-6 h-[1px] bg-gradient-to-r from-cyan-400/10 to-transparent" />
+                  <div className="w-6 h-[1px] bg-gradient-to-r from-emerald-400/10 to-transparent" />
                 </div>
               </div>
             </div>
           </div>
 
           {/* ── Infinite scroll typography — full width at bottom ── */}
-          <div className="about-left-item absolute bottom-15 left-0 right-0 overflow-hidden mx-10">
+          <div className="about-left-item absolute bottom-15 left-0 right-15 overflow-hidden">
             <div className="absolute left-0 top-0 bottom-0 w-16 z-10" style={{ background: "linear-gradient(to right, var(--background), transparent)" }} />
             <div className="absolute right-0 top-0 bottom-0 w-16 z-10" style={{ background: "linear-gradient(to left, var(--background), transparent)" }} />
             <div className="flex whitespace-nowrap animate-marquee mb-2">
               {Array.from({ length: 2 }, (_, k) => (
-                <span key={k} className="text-[11px] font-mono tracking-[0.4em] uppercase text-white mr-8">
+                <span key={k} className="text-[10px] font-mono tracking-[0.4em] uppercase text-white/25 mr-2">
                   think · build · ship · iterate · refine · obsess · repeat · think · build · ship · iterate · refine · obsess · repeat ·{" "}
                 </span>
               ))}
             </div>
             <div className="flex whitespace-nowrap" style={{ animation: "marquee 25s linear infinite reverse" }}>
               {Array.from({ length: 2 }, (_, k) => (
-                <span key={k} className="text-[10px] font-mono tracking-[0.5em] uppercase mr-8">
-                  <span className="text-cyan-400">AI</span>
-                  <span className="text-white"> · design · code · deploy · </span>
-                  <span className="text-cyan-400">learn</span>
-                  <span className="text-white"> · break · fix · </span>
-                  <span className="text-amber-100">craft</span>
-                  <span className="text-white"> · AI · design · code · deploy · learn · break · fix · craft · </span>
+                <span key={k} className="text-[10px] font-mono tracking-[0.5em] uppercase mr-2">
+                  <span className="text-emerald-400/80">AI</span>
+                  <span className="text-white/20"> · deploy · code · </span>
+                  <span className="text-emerald-400/80">break</span>
+                  <span className="text-white/20"> · design · craft · </span>
+                  <span className="text-emerald-400/80">learn</span>
+                  <span className="text-white/20"> · iterate · ship · </span>
+                  <span className="text-emerald-400/80">fix</span>
+                  <span className="text-white/20"> · debug · push · </span>
+                  <span className="text-emerald-400/80">repeat</span>
+                  <span className="text-white/20"> · build · test · </span>
                 </span>
               ))}
             </div>
