@@ -59,7 +59,7 @@ const stackBlock = {
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
-  const [punIndex, setPunIndex] = useState(0);
+  const punIndexRef = useRef(0);
   const punRef = useRef<HTMLSpanElement>(null);
   const infoRefs = useRef<(HTMLDivElement | null)[]>([]);
   const tagRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -130,11 +130,8 @@ export default function About() {
   // Rotate dev puns with scramble effect
   useEffect(() => {
     const id = setInterval(() => {
-      setPunIndex((prev) => {
-        const next = (prev + 1) % devPuns.length;
-        if (punRef.current) scrambleText(punRef.current, devPuns[next], 0.8);
-        return next;
-      });
+      punIndexRef.current = (punIndexRef.current + 1) % devPuns.length;
+      if (punRef.current) scrambleText(punRef.current, devPuns[punIndexRef.current], 0.8);
     }, 3500);
     return () => clearInterval(id);
   }, [scrambleText]);
@@ -474,7 +471,7 @@ export default function About() {
 
               {/* ── Right column: Stacking circles ── */}
               <div className="flex-1 flex items-center justify-center relative">
-                <div className="relative w-[280px] md:w-[420px] aspect-square">
+                <div className="relative w-[280px] md:w-[410px] aspect-square">
                   {circles.map((c, i) => (
                     <div key={c.label} className="circle-node absolute inset-0 rounded-full flex flex-col items-center justify-center text-center px-8 md:px-14"
                       style={{
