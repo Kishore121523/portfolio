@@ -47,7 +47,7 @@ const stackBlock = {
   items: ["Next.js", "Python", "LLMs", "FastAPI", "LangChain", "RAG"],
 };
 
-const blockTags = [bioBlock.tag, metricsBlock.tag, stackBlock.tag];
+
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);

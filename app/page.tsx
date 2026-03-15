@@ -5,7 +5,7 @@ import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
-import SectionWrapper from "@/components/Wrapper";
+
 import SmoothScroller from "@/components/SmoothScroller";
 import GlitchCursor from "@/components/GlitchCursor";
 
