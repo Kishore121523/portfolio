@@ -11,25 +11,25 @@ const scrambleChars = "!<>-_\\/[]{}—=+*^?#アイウエオカキク";
 
 const circles = [
   {
-    label: "APPROACH",
+    label: "THE APPROACH",
     text: "Understand the mess. Untangle it. Ship it clean. Pretend it was obvious.",
   },
   {
-    label: "CRAFT",
+    label: "THE CRAFT",
     text: "From model weights to font weights - every detail gets the same unhealthy attention.",
   },
   {
-    label: "VISION",
-    text: "AI that actually works. Interfaces that don't suck. Deadlines that... we'll get there.",
+    label: "THE VISION",
+    text: "Code that actually works. Interfaces that don't suck. Deadlines that... we'll get there!",
   },
 ];
 
 const bioBlock = {
   tag: "SYS.LOG",
   lines: [
-    "// fluent in Python, TypeScript & PromptScript😛",
+    "// fluent in Python, TypeScript & PromptScript!😛",
     "// builds full-stack apps & half-stack excuses",
-    "// ships AI that works (most of the time)",
+    "// ships code that works (most of the time)",
   ],
 };
 
@@ -402,7 +402,7 @@ export default function About() {
                 </div>
 
                 {/* ── Block 3: Stack ticker ── */}
-                <div
+                {/* <div
                   ref={(el) => { infoRefs.current[2] = el; }}
                   className="about-left-item mt-2.5 border border-white/[0.04] px-4 py-2.5 relative overflow-hidden group"
                   style={{ background: "linear-gradient(135deg, rgba(0,240,255,0.01) 0%, transparent 60%)" }}
@@ -425,7 +425,7 @@ export default function About() {
                   </div>
                   <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-emerald-400/10" />
                   <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-emerald-400/10" />
-                </div>
+                </div> */}
 
                 {/* ── Block 4: Email + CV row ── */}
                 <div className="mt-2.5 flex gap-2.5">
@@ -471,7 +471,7 @@ export default function About() {
 
               {/* ── Right column: Stacking circles ── */}
               <div className="flex-1 flex items-center justify-center relative">
-                <div className="relative w-[280px] md:w-[410px] aspect-square">
+                <div className="relative w-[280px] md:w-[350px] aspect-square">
                   {circles.map((c, i) => (
                     <div key={c.label} className="circle-node absolute inset-0 rounded-full flex flex-col items-center justify-center text-center px-8 md:px-14"
                       style={{
@@ -487,10 +487,10 @@ export default function About() {
                       {/* Bottom amber accent */}
                       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[30%] h-[1px]"
                         style={{ background: "linear-gradient(90deg, transparent, rgba(253,230,138,0.08), transparent)" }} />
-                      <span className="text-[9px] md:text-[13px] font-mono text-amber-100/70 tracking-[0.3em] uppercase mb-4">{c.label}</span>
+                      <span className="text-[9px] md:text-[12px] font-mono text-amber-100/70 tracking-[0.3em] uppercase mb-4">{c.label}</span>
                       <div className="w-8 md:w-12 h-[1px] mb-4"
                         style={{ background: "linear-gradient(90deg, rgba(0,240,255,0.15), rgba(253,230,138,0.2))" }} />
-                      <p className="text-[11px] md:text-[16px] text-white/60 leading-relaxed font-light max-w-[100%]">{c.text}</p>
+                      <p className="text-[11px] md:text-[14px] text-white/60 leading-relaxed font-light max-w-[100%]">{c.text}</p>
                     </div>
                   ))}
                 </div>

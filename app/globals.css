@@ -15,10 +15,12 @@
   cursor: none !important;
 }
 
-/* Smooth scrollbar */
+/* Hide scrollbar */
 html {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
 }
 
 /* Marquee animation for skills */
@@ -68,6 +70,16 @@ html {
   animation: marqueeTech 20s linear infinite;
 }
 
+/* Vertical marquee for tech stack */
+@keyframes marqueeVertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-marquee-vertical {
+  animation: marqueeVertical 15s linear infinite;
+}
+
 /* Slow spin for wireframe globe */
 @keyframes spinSlow {
   from { transform: rotate(0deg); }
@@ -76,6 +88,58 @@ html {
 
 .animate-spin-slow {
   animation: spinSlow 25s linear infinite;
+}
+
+/* Horizontal data stream — alternating directions */
+@keyframes streamLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes streamRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-stream-left {
+  animation: streamLeft 25s linear infinite;
+}
+
+.animate-stream-right {
+  animation: streamRight 30s linear infinite;
+}
+
+/* Flicker/glitch for encrypted text */
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 0.35; }
+  96% { opacity: 0.1; }
+  97% { opacity: 0.4; }
+  98% { opacity: 0.15; }
+}
+
+.animate-flicker {
+  animation: flicker 4s ease-in-out infinite;
+}
+
+/* Glow pulse for highlighted dots */
+@keyframes dotGlow {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.7; }
+}
+
+/* Spider-Verse glitch shapes — follow cursor */
+.glitch-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 25;
+  animation: glitchFlicker 0.6s steps(3) infinite alternate;
+}
+
+@keyframes glitchFlicker {
+  0% { opacity: 0.2; }
+  33% { opacity: 0.7; }
+  66% { opacity: 0; }
+  100% { opacity: 0.5; }
 }
 
 /* Selection color */

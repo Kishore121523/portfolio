@@ -454,21 +454,20 @@ export default function HeroIntroText() {
         </div>
 
         {/* ── Role + Location row ── */}
-        <div className="scatter-el absolute top-[15%] right-[8%] md:right-[12%] flex items-center gap-6">
+        <div className="scatter-el absolute top-[15%] right-[8%] md:right-[12%] flex flex-col items-end gap-2">
+          <span className="text-sm text-white/30 font-mono tracking-wider">AI Engineer // Designer (don&apos;t tell my manager)</span>
           <div className="flex items-center gap-2.5">
-            <div className="relative w-2.5 h-2.5 mb-0.5">
+            <div className="relative w-2.5 h-2.5">
               <div className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-40" />
               <div className="absolute inset-0 rounded-full bg-emerald-400" />
             </div>
             <span className="text-sm text-white/50 font-mono uppercase tracking-wider">India</span>
           </div>
-          <span className="text-white/10">|</span>
-          <span className="text-sm text-white/30 font-mono uppercase tracking-wider">AI Developer & Designer</span>
         </div>
 
         {/* ── Wireframe Globe ── */}
-        <div className="wireframe-globe absolute bottom-[17%] left-[6%] md:left-[10%] w-28 h-28 md:w-48 md:h-48 opacity-0">
-          <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="0.5">
+        <div className="wireframe-globe absolute bottom-[15.5%] left-[6%] md:left-[10%] w-28 h-28 md:w-48 md:h-48 opacity-0">
+          <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5">
             <circle cx="50" cy="50" r="45" />
             <ellipse cx="50" cy="50" rx="45" ry="18" />
             <ellipse cx="50" cy="50" rx="45" ry="18" transform="rotate(60 50 50)" />
