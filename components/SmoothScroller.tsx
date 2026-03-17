@@ -10,9 +10,10 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScroller() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => 1 - Math.pow(2, -8 * t),
-      // easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      duration: 2,
+      easing: (t) => 1 - Math.pow(2, -6 * t),
+      wheelMultiplier: 0.5,
+      touchMultiplier: 1.2,
     });
 
     function raf(time: DOMHighResTimeStamp) {

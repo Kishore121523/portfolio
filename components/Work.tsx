@@ -192,7 +192,7 @@ export default function Work() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=600%",
+          end: "+=750%",
           scrub: 0.6,
           pin: true,
           anticipatePin: 1,
@@ -235,11 +235,10 @@ export default function Work() {
 
         // Single tween for the whole glitch — we control all chars in onUpdate
         const glitchObj = { progress: 0 };
-        const totalDuration = 1; // normalized 0→1
 
         glitchTl.to(glitchObj, {
           progress: 1,
-          duration: totalDuration,
+          duration: 1,
           ease: "none",
           onUpdate: function () {
             const p = glitchObj.progress;
@@ -261,7 +260,7 @@ export default function Work() {
               } else if (localP >= 1) {
                 // Done — hidden
                 charEl.textContent = "";
-                charEl.style.opacity = "0";
+
                 charEl.style.visibility = "hidden";
               } else {
                 // Scrambling — show random chars with jitter and color shifts
@@ -322,7 +321,27 @@ export default function Work() {
           duration: hDuration,
           ease: "none",
         }, hStart);
+
+        // Hold on last project for a few beats before unpinning
+        tl.to({}, { duration: 0.5 });
       }
+
+      // Persistent subtle glitch on project numbers
+      const projectNums = sectionRef.current?.querySelectorAll(".project-number") as NodeListOf<HTMLElement>;
+      projectNums?.forEach((el, i) => {
+        const glitchLoop = gsap.timeline({ repeat: -1, delay: i * 1.2 });
+        glitchLoop.to(el, { duration: 2 + Math.random() * 3 });
+        glitchLoop.to(el, {
+          keyframes: [
+            { filter: "drop-shadow(-5px 0 rgba(255,0,50,0.9)) drop-shadow(5px 0 rgba(0,200,255,0.9))", x: 3, duration: 0.05 },
+            { filter: "drop-shadow(6px 0 rgba(255,0,50,1)) drop-shadow(-6px 0 rgba(0,200,255,1))", x: -4, duration: 0.05 },
+            { filter: "none", x: 0, duration: 0.04 },
+            { filter: "drop-shadow(-4px 0 rgba(255,0,50,0.8)) drop-shadow(4px 0 rgba(0,200,255,0.8))", x: 2, duration: 0.04 },
+            { filter: "none", x: 0, duration: 0.06 },
+          ],
+          ease: "none",
+        });
+      });
 
     }, sectionRef);
 
@@ -539,7 +558,25 @@ export default function Work() {
         </div>
 
         {/* Horizontal track */}
-        <div ref={horizontalRef} className="flex h-full" style={{ width: `${projects.length * 100}vw` }}>
+        <div ref={horizontalRef} className="flex h-full relative" style={{ width: `${projects.length * 100}vw` }}>
+          {/* Background symbols — glitching subtly */}
+          <div className="absolute inset-0 flex items-center pointer-events-none select-none z-0">
+            {"ΞΩΔΣΠΛΦ∞Σ∂ΘΨ≈±ΞΨΩΔΣΠΛΦ∞Σ∂Θ∏≈±".split("").map((char, ci) => (
+              <span
+                key={ci}
+                className="bg-symbol-glitch"
+                style={{
+                  fontSize: "clamp(8rem, 28vw, 28rem)",
+                  color: "rgba(255,255,255,0.015)",
+                  letterSpacing: "0.3em",
+                  display: "inline-block",
+                  animationDelay: `${ci * 0.2}s`,
+                }}
+              >
+                {char}
+              </span>
+            ))}
+          </div>
           {projects.map((project, i) => (
             <div
               key={project.title}
@@ -547,15 +584,15 @@ export default function Work() {
             >
               <div className="w-full px-[8%] md:px-[12%] flex flex-col md:flex-row md:items-center md:justify-between gap-8">
                 <div className="max-w-[600px]">
-                  <span className={`work-project-item-${i} text-[10px] font-mono text-emerald-400/60 tracking-[0.3em] uppercase block mb-4`}>
+                  <span className={`work-project-item-${i} text-[10px] font-mono text-emerald-400/80 tracking-[0.3em] uppercase block mb-4`}>
                     {project.tag}
                   </span>
-                  <h3 className={`work-project-item-${i} text-[clamp(2rem,5vw,4.5rem)] font-extrabold text-foreground leading-[1] tracking-tight mb-4`}>
+                  <h3 className={`work-project-item-${i} text-[clamp(2rem,5vw,6rem)] font-extrabold text-amber-100 leading-[1] tracking-tight mb-4`}>
                     {project.title}
                   </h3>
                   <div className={`work-project-item-${i} w-16 h-[1px] mb-5`}
                     style={{ background: "linear-gradient(90deg, rgba(16,185,129,0.4), rgba(253,230,138,0.2), transparent)" }} />
-                  <p className={`work-project-item-${i} text-foreground/40 text-sm md:text-base leading-relaxed max-w-[440px] mb-8`}>
+                  <p className={`work-project-item-${i} text-amber-100/80 text-sm md:text-base leading-relaxed max-w-[440px] mb-8`}>
                     {project.desc}
                   </p>
                   <div className={`work-project-item-${i} flex items-center gap-4`}>
@@ -563,7 +600,7 @@ export default function Work() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="group flex items-center gap-2 border border-white/[0.08] px-5 py-2.5 rounded-full text-xs font-mono text-white/50 hover:border-emerald-400/30 hover:text-emerald-400 transition-all duration-300"
+                      className="group flex items-center gap-2 border border-white/[0.08] px-5 py-2.5 rounded-full text-xs font-mono text-emerald-400/80 hover:border-amber-100/30 hover:text-amber-100 transition-all duration-300"
                     >
                       Live
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -572,7 +609,7 @@ export default function Work() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="group flex items-center gap-2 border border-white/[0.08] px-5 py-2.5 rounded-full text-xs font-mono text-white/50 hover:border-amber-100/30 hover:text-amber-100 transition-all duration-300"
+                      className="group flex items-center gap-2 border border-white/[0.08] px-5 py-2.5 rounded-full text-xs font-mono text-emerald-400/80 hover:border-amber-100/30 hover:text-amber-100 transition-all duration-300"
                     >
                       GitHub
                       <GitBranch className="w-3.5 h-3.5" />
@@ -611,10 +648,10 @@ export default function Work() {
                     }}
                   >
                     {/* Emerald accent border — offset for depth */}
-                    <div className="absolute -top-3 -left-3 w-full h-full border border-emerald-400/20 rounded-lg" />
+                    <div className="absolute top-0 left-0 w-full h-full bg-emerald-400/10 rounded-lg" />
 
                     {/* Main image */}
-                    <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/[0.08]">
+                    <div className="relative w-full h-full rounded-lg overflow-hidden border-emerald-400/10 border-2">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -633,16 +670,16 @@ export default function Work() {
 
                     {/* Glitch shapes — triangles, circles, pentagons, hexagons, diamonds */}
                     {[
-                      { type: "triangle", size: 35, color: "#10b981" },
-                      { type: "circle", size: 28, color: "#f87171" },
-                      { type: "pentagon", size: 32, color: "#a78bfa" },
-                      { type: "diamond", size: 30, color: "#fb923c" },
-                      { type: "hexagon", size: 34, color: "#60a5fa" },
-                      { type: "circle", size: 26, color: "#10b981" },
-                      { type: "triangle", size: 30, color: "#fde68a" },
-                      { type: "hexagon", size: 28, color: "#f87171" },
-                      { type: "diamond", size: 32, color: "#10b981" },
-                      { type: "pentagon", size: 30, color: "#60a5fa" },
+                      { type: "triangle", size: 32, color: "#10b981" },
+                      { type: "circle", size: 25, color: "#f87171" },
+                      { type: "pentagon", size: 30, color: "#a78bfa" },
+                      { type: "diamond", size: 27, color: "#fb923c" },
+                      { type: "hexagon", size: 32, color: "#60a5fa" },
+                      { type: "circle", size: 23, color: "#10b981" },
+                      { type: "triangle", size: 28, color: "#fde68a" },
+                      { type: "hexagon", size: 25, color: "#f87171" },
+                      { type: "diamond", size: 30, color: "#10b981" },
+                      { type: "pentagon", size: 27, color: "#60a5fa" },
                     ].map((s, si) => {
                       const sz = s.size;
                       const common: React.CSSProperties = { display: "none", width: `${sz}px`, height: `${sz}px` };
@@ -663,20 +700,18 @@ export default function Work() {
 
                     {/* Number — dark, bold, half outside at bottom-right */}
                     <span
-                      className="absolute text-[clamp(5rem,12vw,10rem)] font-black font-mono leading-none select-none z-20 italic"
+                      className="project-number absolute text-[clamp(5rem,12vw,10rem)] font-black font-mono leading-none select-none z-20 italic"
                       style={{
                         bottom: "-3rem",
                         right: "-2rem",
-                        color: "rgba(21,21,21,0.9)",
+                        color: "rgba(25,25,25,1)",
                         WebkitTextStroke: "3px rgba(16,185,129,0.6)",
                       }}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
 
-                    {/* Corner accents */}
-                    <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b border-l border-emerald-400/30" />
-                    <div className="absolute -top-1 -right-1 w-5 h-5 border-t border-r border-emerald-400/15" />
+
                   </div>
                 </div>
               </div>

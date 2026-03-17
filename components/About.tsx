@@ -535,11 +535,6 @@ export default function About() {
               ))}
             </div>
           </div>
-
-          {/* ── Bottom corner marker ── */}
-          <div className="absolute bottom-3 right-6 text-[9px] text-white/40 font-mono">
-            ┘ about
-          </div>
         </div>
       </div>
     </section>

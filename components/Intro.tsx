@@ -492,7 +492,7 @@ export default function HeroIntroText() {
 
 
         {/* ── Description Block ── */}
-        <div className="scatter-el absolute bottom-[12%] right-[6%] md:right-[8%] max-w-[320px] border-l border-white/10 pl-5">
+        <div className="scatter-el absolute bottom-[8%] right-[6%] md:right-[8%] max-w-[320px] border-l border-white/10 pl-5">
           {/* ── Crosshair Targets ── */}
           <div className="crosshair absolute top-[-50%] right-[-5%] w-18 h-18 opacity-0">
             <svg viewBox="0 0 48 48" className="w-full h-full" stroke="rgba(253,230,138,0.9)" strokeWidth="0.5" fill="none">
@@ -504,11 +504,11 @@ export default function HeroIntroText() {
               <line x1="32" y1="24" x2="44" y2="24" />
             </svg>
           </div>
-          <p className="text-[14px] text-white/30 leading-relaxed font-light">
-            From foundation models to full-stack applications —
-            building intelligent systems with Python, TypeScript,
-            React, and cloud platforms. Focused on Generative AI,
-            LangChain, and autonomous agents.
+          <p className="text-[16px] text-white/30 leading-relaxed font-light">
+            I work across the full stack. Next.js, Python, cloud,
+            with a sharp focus on Generative AI and LangChain.
+            I build RAG pipelines, AI-powered products, and
+            systems people actually use.
           </p>
         </div>
 
@@ -555,10 +555,7 @@ export default function HeroIntroText() {
           </a>
         </div>
 
-        {/* ── Corner Markers ── */}
-        <div className="scatter-el absolute bottom-[5%] right-[6%] md:right-[10%] text-[9px] text-white/40 font-mono">
-          ┘ Home
-        </div>
+
 
         {/* ── Tech Stack Grid — glitching 3x3 ── */}
         <div className="absolute bottom-[22%] md:bottom-[22%] left-[26%] md:left-[28%] right-[36%] md:right-[34%]">
