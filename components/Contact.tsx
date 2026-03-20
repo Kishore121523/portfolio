@@ -50,7 +50,7 @@ export default function Contact() {
       <div className="contact-grid grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl">
         {/* Phone */}
         <a
-          href="tel:+18073581508"
+          href="tel:+917373219696"
           className="contact-card flex items-center gap-5 bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 group"
         >
           <div className="w-12 h-12 rounded-xl bg-amber-100/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-100/20 transition-colors">

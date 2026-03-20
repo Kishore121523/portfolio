@@ -5,13 +5,14 @@ import Skills from "@/components/Skills";
 
 import Footer from "@/components/Footer";
 
-
+import Loader from "@/components/Loader";
 import SmoothScroller from "@/components/SmoothScroller";
 import GlitchCursor from "@/components/GlitchCursor";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
+      <Loader />
       <SmoothScroller />
       <GlitchCursor />
       {/* Hero */}

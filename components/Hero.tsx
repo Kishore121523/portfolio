@@ -130,7 +130,7 @@ export default function Hero() {
     >
       <div
         ref={contentRef}
-        className="w-full max-w-[95%] h-[90%] flex flex-col items-center justify-center rounded-2xl relative overflow-hidden z-10"
+        className="w-full max-w-[95%] h-[90%] flex flex-col items-center justify-center rounded-2xl relative overflow-hidden z-10 pointer-events-none"
       >
 
         <div
@@ -139,7 +139,7 @@ export default function Hero() {
           style={{ backgroundImage: "url('/forestDark.png')", backgroundPositionY: bgY }}
         />
 
-        <div className="absolute inset-0 flex w-full h-full gap-2 p-2 z-10">
+        <div className="absolute inset-0 flex w-full h-full gap-2 p-2 z-10 pointer-events-none">
           {[leftRef, centerRef, rightRef].map((ref, i) => (
             <div
               key={i}
@@ -161,12 +161,12 @@ export default function Hero() {
           ))}
         </div>
 
-        <div id="hero-name" className="text-white absolute bottom-[1.5rem] right-[1.5rem] z-20">
+        <div id="hero-name" className="text-white absolute bottom-[1.5rem] right-[1.5rem] z-20 pointer-events-none">
           <p className=" font-bold text-[4rem] sm:text-[6rem] md:text-[8rem]">Kishore</p> 
           <p className="text-[2rem] text-right md:mt-[-2.4rem]">portfolio.</p>
         </div>
 
-        <div id="hero-socials" className="flex flex-col text-white absolute bottom-[2rem] left-[1.5rem] z-20 gap-6">
+        <div id="hero-socials" className="flex flex-col text-white absolute bottom-[2rem] left-[1.5rem] z-20 gap-6 pointer-events-auto">
           <a
             href="https://github.com/Kishore121523"
             target="_blank"

@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const links = ["home", "about", "work", "skills", "contact"];
+const links = ["home", "about", "work", "skills"];
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);

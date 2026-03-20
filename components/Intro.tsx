@@ -434,21 +434,21 @@ export default function HeroIntroText() {
       >
         {/* ── Big Statement Typography ── */}
         <div className="absolute top-[28%] left-[8%] md:left-[12%] max-w-[80%] md:max-w-[65%]">
-          <p className="hero-line-1 text-[clamp(2rem,5.5vw,5rem)] font-extrabold text-white leading-[1.05] tracking-tight">
+          <p className="hero-line-1 text-[clamp(2rem,5.5vw,5rem)] font-extrabold text-gray-200 leading-[1.05] tracking-tight">
             Somewhere between
           </p>
-          <p className="hero-line-2 text-[clamp(2rem,5.5vw,5rem)] font-extrabold text-white leading-[1.05] tracking-tight mt-1">
-            <span className="italic font-light text-white/40" style={{ fontFamily: "Georgia, serif" }}>design</span>{" "}
+          <p className="hero-line-2 text-[clamp(2rem,5.5vw,5rem)] font-extrabold text-gray-200 leading-[1.05] tracking-tight mt-1">
+            <span className="italic font-light text-emerald-400" style={{ fontFamily: "Georgia, serif" }}>design</span>{" "}
             and{" "}
             <span className="text-amber-100 relative inline-block">
               algorithms
-              <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-amber-100/50 to-transparent" />
+              <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-amber-100/75 to-transparent" />
             </span>
             <span className="text-white/20">,</span>
           </p>
-          <p className="hero-line-3 text-[clamp(2rem,5.5vw,5rem)] font-extrabold text-white leading-[1.05] tracking-tight mt-1">
+          <p className="hero-line-3 text-[clamp(2rem,5.5vw,5rem)] font-extrabold text-gray-200 leading-[1.05] tracking-tight mt-2">
             I found my{" "}
-            <span className="text-emerald-400">thing</span>
+            <span className="text-white/20">thing</span>
             <span className="text-white/20">.</span>
           </p>
         </div>
