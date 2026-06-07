@@ -42,7 +42,20 @@ export default function SmoothScroller() {
     });
     ScrollTrigger.refresh();
 
+    // Recalculate pin/scroll distances once everything has settled. On a first
+    // (uncached) prod load, fonts/images land after ScrollTrigger's initial
+    // measurement, which can make a pinned section unpin early — refreshing fixes it.
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(refresh).catch(() => {});
+    }
+    // Belt-and-suspenders: matches the loader's minimum display window.
+    const settleTimer = setTimeout(refresh, 3200);
+
     return () => {
+      window.removeEventListener("load", refresh);
+      clearTimeout(settleTimer);
       ScrollTrigger.removeEventListener("refresh", () => {
         // No lenis.update() needed; Lenis does not have an update method
       });
