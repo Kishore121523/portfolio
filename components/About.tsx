@@ -28,7 +28,7 @@ const bioBlock = {
   tag: "SYS.LOG",
   lines: [
     "// fluent in Python, TypeScript & PromptScript!😛",
-    "// builds full-stack apps & half-stack excuses",
+    "// RAG, agents, fine-tuning — the usual suspects",
     "// ships code that works (most of the time)",
   ],
 };

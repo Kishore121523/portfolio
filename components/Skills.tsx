@@ -15,6 +15,12 @@ interface TimelineEntry {
 
 const timeline = [
   {
+    year: "2026",
+    entries: [
+      { title: "AI Solutions Engineer", org: "Wadhwani Foundation", type: "work" as const },
+    ],
+  },
+  {
     year: "2025",
     entries: [
       { title: "Generative AI Engineer", org: "Wadhwani Foundation", type: "work" as const },
@@ -90,6 +96,8 @@ const typeLabels: Record<string, string> = {
 
 // Arc config — full 360° circle, evenly spaced
 const ARC_RADIUS = 1000;
+// Vertical placement: the apex card sits at `100vh - ARC_APEX_OFFSET` from the top.
+const ARC_APEX_OFFSET = 370;
 const TOTAL_CARDS = allEntries.length;
 const CARD_ANGLE_GAP = 360 / TOTAL_CARDS; // 18° for 20 cards
 const LAST_INDEX = TOTAL_CARDS - 1;
@@ -302,6 +310,14 @@ export default function Skills() {
           ease: "power3.inOut",
         }, `${morphLabel}+=1.5`);
 
+        // Slide the whole arc up so the grown card lands in the vertical center
+        // of the viewport (apex currently sits at 100vh - ARC_APEX_OFFSET).
+        tl.to(arcRef.current, {
+          y: () => ARC_APEX_OFFSET - window.innerHeight / 2,
+          duration: 3,
+          ease: "power3.inOut",
+        }, `${morphLabel}+=1.5`);
+
         // Illustration dissolves as card grows
         if (morphIllustration) {
           tl.to(morphIllustration, {
@@ -421,7 +437,7 @@ export default function Skills() {
       >
 
         {/* Heading — cinematic staggered reveal */}
-        <div ref={headingRef} className="absolute top-[3.5%] left-0 right-0 text-center px-8 z-20" style={{ perspective: "800px" }}>
+        <div ref={headingRef} className="absolute top-[6.5%] left-0 right-0 text-center px-8 z-20" style={{ perspective: "800px" }}>
           <h2 className="leading-[1]" style={{ fontSize: "clamp(3rem, 9vw, 9rem)" }}>
             <span
               className="word-the inline-block text-amber-100/50 mr-[0.35em] mt-8"
@@ -457,7 +473,7 @@ export default function Skills() {
             width: 0,
             height: 0,
             left: "50%",
-            top: `calc(100% + ${ARC_RADIUS - 430}px)`,
+            top: `calc(100% + ${ARC_RADIUS - ARC_APEX_OFFSET}px)`,
             opacity: 1,
           }}
         >
@@ -604,7 +620,7 @@ export default function Skills() {
         {/* Progress bar */}
         <div className="timeline-progress-bar absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20">
           <span className="text-[9px] font-mono text-emerald-400/40 tracking-[0.3em] uppercase">
-            2025
+            2026
           </span>
           <div className="w-24 h-[2px] bg-white/[0.06] rounded-full overflow-hidden">
             <div

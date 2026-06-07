@@ -135,12 +135,12 @@ export default function Loader() {
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center gap-8"
+      className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center gap-8 overflow-hidden px-4"
     >
       {/* Scrambling glitch text above */}
       <div
         ref={topTextRef}
-        className="flex gap-[3px] font-mono text-lg tracking-widest"
+        className="flex flex-wrap justify-center gap-[2px] md:gap-[3px] font-mono text-sm md:text-lg tracking-widest"
       >
         {Array.from({ length: charCount }).map((_, i) => (
           <span
@@ -213,7 +213,7 @@ export default function Loader() {
       </svg>
 
       {/* Easter egg binary below */}
-      <p className="font-mono text-[11px] tracking-[0.3em] text-white/20">
+      <p className="font-mono text-[9px] md:text-[11px] tracking-[0.15em] md:tracking-[0.3em] text-white/20 text-center px-2 break-words max-w-full">
         {EASTER_EGG}
       </p>
     </div>

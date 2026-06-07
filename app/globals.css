@@ -15,11 +15,27 @@
   cursor: none !important;
 }
 
+/* Restore native cursor on touch / no-hover devices (mobile view has no custom cursor) */
+@media (hover: none), (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+}
+
 /* Hide scrollbar */
 html {
   scrollbar-width: none;
 }
 html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Reusable scrollbar hide (e.g. mobile carousels) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
