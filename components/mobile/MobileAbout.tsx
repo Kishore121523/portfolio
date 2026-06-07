@@ -142,24 +142,21 @@ export default function MobileAbout() {
         </div>
       </Reveal>
 
-      <Reveal delay={160} className="mt-3 flex flex-col gap-3">
+      <Reveal delay={160} className="mt-3 flex gap-3">
         <button
           onClick={copy}
-          className="w-full border border-white/[0.06] rounded-lg px-4 py-3 text-left active:border-emerald-400/25 transition-colors focus:outline-none"
+          className="flex-1 border border-white/[0.06] rounded-lg px-4 py-3 text-left active:border-emerald-400/25 transition-colors focus:outline-none"
         >
           <span className="text-[9px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-1.5">
             EMAIL
           </span>
-          <span className="text-white/80 text-[12px] font-mono flex items-center justify-between gap-2">
+          <span className="text-white/80 text-[11px] font-mono flex items-center gap-2">
             {copied ? (
-              <span className="text-emerald-400 flex items-center gap-1.5">
-                <Check className="w-3.5 h-3.5" /> copied to clipboard!
+              <span className="text-emerald-400 flex items-center gap-1">
+                <Check className="w-3 h-3" /> copied!
               </span>
             ) : (
-              <>
-                <span className="truncate">kishore231512@gmail.com</span>
-                <Copy className="w-3.5 h-3.5 text-white/60 shrink-0" />
-              </>
+              <>kishore...<Copy className="w-3 h-3 text-white/60" /></>
             )}
           </span>
         </button>
@@ -167,14 +164,13 @@ export default function MobileAbout() {
           href="/Resume.pdf"
           target="_blank"
           rel="noreferrer"
-          className="w-full border border-white/[0.06] rounded-lg px-4 py-3 active:border-emerald-400/25 transition-colors"
+          className="flex-1 border border-white/[0.06] rounded-lg px-4 py-3 active:border-emerald-400/25 transition-colors"
         >
           <span className="text-[9px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-1.5">
             RESUME
           </span>
-          <span className="text-white/80 text-[12px] font-mono flex items-center justify-between gap-2">
-            <span>Resume.pdf</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-white/60 shrink-0" />
+          <span className="text-white/80 text-[11px] font-mono flex items-center gap-2">
+            .pdf<ArrowUpRight className="w-3 h-3 text-white/60" />
           </span>
         </a>
       </Reveal>
