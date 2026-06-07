@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useLayoutEffect, useCallback } from "react";
+import { useRef, useLayoutEffect, useCallback, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -97,7 +97,7 @@ const typeLabels: Record<string, string> = {
 // Arc config — full 360° circle, evenly spaced
 const ARC_RADIUS = 1000;
 // Vertical placement: the apex card sits at `100vh - ARC_APEX_OFFSET` from the top.
-const ARC_APEX_OFFSET = 370;
+const ARC_APEX_OFFSET = 380;
 const TOTAL_CARDS = allEntries.length;
 const CARD_ANGLE_GAP = 360 / TOTAL_CARDS; // 18° for 20 cards
 const LAST_INDEX = TOTAL_CARDS - 1;
@@ -106,6 +106,15 @@ export default function Skills() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const arcRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+
+  // Lift the arc apex higher on large monitors.
+  const [apexOffset, setApexOffset] = useState(ARC_APEX_OFFSET);
+  useEffect(() => {
+    const update = () => setApexOffset(window.innerWidth >= 1700 ? 400 : ARC_APEX_OFFSET);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -313,7 +322,7 @@ export default function Skills() {
         // Slide the whole arc up so the grown card lands in the vertical center
         // of the viewport (apex currently sits at 100vh - ARC_APEX_OFFSET).
         tl.to(arcRef.current, {
-          y: () => ARC_APEX_OFFSET - window.innerHeight / 2,
+          y: () => (window.innerWidth >= 1700 ? 400 : ARC_APEX_OFFSET) - window.innerHeight / 2,
           duration: 3,
           ease: "power3.inOut",
         }, `${morphLabel}+=1.5`);
@@ -473,7 +482,7 @@ export default function Skills() {
             width: 0,
             height: 0,
             left: "50%",
-            top: `calc(100% + ${ARC_RADIUS - ARC_APEX_OFFSET}px)`,
+            top: `calc(100% + ${ARC_RADIUS - apexOffset}px)`,
             opacity: 1,
           }}
         >
@@ -502,19 +511,19 @@ export default function Skills() {
                   <div className="card-timeline-content absolute inset-0 flex flex-col justify-between">
                     <div className="p-5">
                       <span
-                        className={`scatter-el inline-block text-[14px] font-mono uppercase tracking-[0.2em] ${typeAccents[entry.type]}`}
+                        className={`scatter-el inline-block text-[14px] min-[1700px]:text-[15px]! font-mono uppercase tracking-[0.2em] ${typeAccents[entry.type]}`}
                       >
                         {typeLabels[entry.type]}
                       </span>
-                      <p className="scatter-el text-amber-100 font-bold text-[24px] leading-tight mt-3">
+                      <p className="scatter-el text-amber-100 font-bold text-[24px] min-[1700px]:text-[26px]! leading-tight mt-3">
                         {entry.title}
                       </p>
-                      <p className="scatter-el text-amber-100/35 text-[16px] mt-2 leading-snug">
+                      <p className="scatter-el text-amber-100/35 text-[16px] min-[1700px]:text-[17px]! mt-2 leading-snug">
                         {entry.org}
                       </p>
                     </div>
                     <div className="p-5 pt-0">
-                      <span className="scatter-el inline-block text-amber-100/10 font-black text-[3.5rem] leading-none select-none">
+                      <span className="scatter-el inline-block text-amber-100/10 font-black text-[3.5rem] min-[1700px]:text-[3.75rem]! leading-none select-none">
                         {entry.year}
                       </span>
                     </div>

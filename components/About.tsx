@@ -27,7 +27,7 @@ const circles = [
 const bioBlock = {
   tag: "SYS.LOG",
   lines: [
-    "// fluent in Python, TypeScript & PromptScript!😛",
+    "// fluent in Python, TypeScript & PromptScript!",
     "// RAG, agents, fine-tuning — the usual suspects",
     "// ships code that works (most of the time)",
   ],
@@ -331,10 +331,10 @@ export default function About() {
 
           {/* ── Content: Centered two-column layout ── */}
           <div className="absolute inset-x-0 top-[18%] bottom-[4%] flex items-center justify-center">
-            <div className="flex items-center gap-8 md:gap-14 w-full max-w-5xl mx-auto">
+            <div className="flex items-center gap-8 md:gap-14 min-[1700px]:gap-12! w-full max-w-5xl min-[1700px]:max-w-6xl! mx-auto">
 
               {/* ── Left column ── */}
-              <div className="w-[280px] md:w-[420px] shrink-0 relative">
+              <div className="w-[280px] md:w-[420px] min-[1700px]:w-[510px]! shrink-0 relative">
 
                 {/* ── Block 1: Terminal bio ── */}
                 <div
@@ -346,30 +346,30 @@ export default function About() {
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,240,255,0.015) 2px, rgba(0,240,255,0.015) 4px)" }} />
                   {/* Top bar */}
-                  <div className="flex items-center gap-2 px-3 py-1.5 border-b border-white/[0.04]">
-                    <div className="flex gap-1">
-                      <div className="w-1.5 h-1.5 rounded-full bg-red-400/30" />
-                      <div className="w-1.5 h-1.5 rounded-full bg-amber-400/30" />
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-400/30" />
+                  <div className="flex items-center gap-2 px-3 py-1.5 min-[1700px]:px-4! min-[1700px]:py-2.5! border-b border-white/[0.04]">
+                    <div className="flex gap-1 min-[1700px]:gap-1.5!">
+                      <div className="w-1.5 h-1.5 min-[1700px]:w-2! min-[1700px]:h-2! rounded-full bg-red-400/30" />
+                      <div className="w-1.5 h-1.5 min-[1700px]:w-2! min-[1700px]:h-2! rounded-full bg-amber-400/30" />
+                      <div className="w-1.5 h-1.5 min-[1700px]:w-2! min-[1700px]:h-2! rounded-full bg-green-400/30" />
                     </div>
                     <span
                       ref={(el) => { tagRefs.current[0] = el; }}
                       data-text={bioBlock.tag}
-                      className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase"
+                      className="text-[8px] min-[1700px]:text-[10px]! font-mono text-emerald-400/70 tracking-[0.3em] uppercase"
                     >
                       {bioBlock.tag}
                     </span>
                   </div>
                   {/* Code lines */}
-                  <div className="px-3 py-3 font-mono text-[11px] md:text-[12px] leading-[1.7]">
+                  <div className="px-3 py-3 min-[1700px]:px-4! min-[1700px]:py-4! font-mono text-[11px] md:text-[12px] min-[1700px]:text-[14px]! leading-[1.7] min-[1700px]:leading-[1.85]!">
                     {bioBlock.lines.map((line, li) => (
-                      <div key={li} className="flex gap-2">
-                        <span className="text-white/10 select-none w-4 text-right shrink-0">{li + 1}</span>
+                      <div key={li} className="flex gap-2 min-[1700px]:gap-3!">
+                        <span className="text-white/10 select-none w-4 min-[1700px]:w-5! text-right shrink-0">{li + 1}</span>
                         <span className="text-white/80">{line}</span>
                       </div>
                     ))}
-                    <div className="flex gap-2 mt-0.5">
-                      <span className="text-white/10 select-none w-4 text-right shrink-0">4</span>
+                    <div className="flex gap-2 min-[1700px]:gap-3! mt-0.5">
+                      <span className="text-white/10 select-none w-4 min-[1700px]:w-5! text-right shrink-0">4</span>
                       <span className="text-emerald-400/70 animate-pulse">▋</span>
                     </div>
                   </div>
@@ -381,7 +381,7 @@ export default function About() {
                 {/* ── Block 2: Rotating dev pun ── */}
                 <div
                   ref={(el) => { infoRefs.current[1] = el; }}
-                  className="about-left-item mt-2.5 border border-white/[0.04] px-4 py-3 relative overflow-hidden group"
+                  className="about-left-item mt-2.5 min-[1700px]:mt-3! border border-white/[0.04] px-4 py-3 min-[1700px]:px-5! min-[1700px]:py-4! relative overflow-hidden group"
                   style={{ background: "linear-gradient(135deg, rgba(0,240,255,0.01) 0%, transparent 60%)" }}
                 >
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
@@ -389,11 +389,11 @@ export default function About() {
                   <span
                     ref={(el) => { tagRefs.current[1] = el; }}
                     data-text="DEV.LOG"
-                    className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-2"
+                    className="text-[8px] min-[1700px]:text-[10px]! font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-2 min-[1700px]:mb-2!"
                   >
                     DEV.LOG
                   </span>
-                  <p className="text-[12px] md:text-[13px] font-mono text-white/80 leading-relaxed">
+                  <p className="text-[12px] md:text-[13px] min-[1700px]:text-[14px]! font-mono text-white/80 leading-relaxed">
                     <span className="text-emerald-400/70 mr-1.5">&gt;</span>
                     <span ref={punRef}>{devPuns[0]}</span>
                   </p>
@@ -428,17 +428,17 @@ export default function About() {
                 </div> */}
 
                 {/* ── Block 4: Email + CV row ── */}
-                <div className="mt-2.5 flex gap-2.5">
+                <div className="mt-2.5 min-[1700px]:mt-3! flex gap-2.5 min-[1700px]:gap-3!">
                   <button
                     onClick={handleCopy}
-                    className="about-left-item flex-1 border border-white/[0.04] px-3 py-2.5 text-left relative overflow-hidden group hover:border-emerald-400/15 transition-colors"
+                    className="about-left-item flex-1 border border-white/[0.04] px-3 py-2.5 min-[1700px]:px-4! min-[1700px]:py-3! text-left relative overflow-hidden group hover:border-emerald-400/15 transition-colors"
                   >
-                    <span className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-1">EMAIL</span>
-                    <span className="text-white/80 text-[10px] font-mono flex items-center gap-2">
+                    <span className="text-[8px] min-[1700px]:text-[10px]! font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-1 min-[1700px]:mb-1.5!">EMAIL</span>
+                    <span className="text-white/80 text-[10px] min-[1700px]:text-[12px]! font-mono flex items-center gap-2">
                       {copied ? (
                         <span className="text-emerald-400">copied!</span>
                       ) : (
-                        <>kishore...<Copy className="w-2.5 h-2.5 text-white/80 group-hover:text-emerald-400/70 transition-colors" /></>
+                        <>kishore...<Copy className="w-2.5 h-2.5 min-[1700px]:w-3.5! min-[1700px]:h-3.5! text-white/80 group-hover:text-emerald-400/70 transition-colors" /></>
                       )}
                     </span>
                     <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-emerald-400/10" />
@@ -447,11 +447,11 @@ export default function About() {
                     href="/Resume.pdf"
                     target="_blank"
                     rel="noreferrer"
-                    className="about-left-item flex-1 border border-white/[0.04] px-3 py-2.5 relative overflow-hidden group hover:border-emerald-400/15 transition-colors"
+                    className="about-left-item flex-1 border border-white/[0.04] px-3 py-2.5 min-[1700px]:px-4! min-[1700px]:py-3! relative overflow-hidden group hover:border-emerald-400/15 transition-colors"
                   >
-                    <span className="text-[8px] font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-1">RESUME</span>
-                    <span className="text-white/80 text-[10px] font-mono flex items-center gap-2">
-                      .pdf<ArrowUpRight className="w-2.5 h-2.5 text-white/80 group-hover:text-emerald-400/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <span className="text-[8px] min-[1700px]:text-[10px]! font-mono text-emerald-400/70 tracking-[0.3em] uppercase block mb-1 min-[1700px]:mb-1.5!">RESUME</span>
+                    <span className="text-white/80 text-[10px] min-[1700px]:text-[12px]! font-mono flex items-center gap-2">
+                      .pdf<ArrowUpRight className="w-2.5 h-2.5 min-[1700px]:w-3.5! min-[1700px]:h-3.5! text-white/80 group-hover:text-emerald-400/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </span>
                     <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-emerald-400/10" />
                   </a>
@@ -471,26 +471,26 @@ export default function About() {
 
               {/* ── Right column: Stacking circles ── */}
               <div className="flex-1 flex items-center justify-center relative">
-                <div className="relative w-[280px] md:w-[350px] aspect-square">
+                <div className="relative w-[280px] md:w-[350px] min-[1700px]:w-[450px]! aspect-square">
                   {circles.map((c, i) => (
-                    <div key={c.label} className="circle-node absolute inset-0 rounded-full flex flex-col items-center justify-center text-center px-8 md:px-14"
+                    <div key={c.label} className="circle-node absolute inset-0 rounded-full flex flex-col items-center justify-center text-center px-8 md:px-14 min-[1700px]:px-20!"
                       style={{
                         zIndex: i,
                         background: "radial-gradient(circle at 50% 35%, rgba(30,28,25,1) 0%, var(--background) 70%)",
                         boxShadow: "inset 0 0 80px rgba(0,240,255,0.015), 0 0 0 1px rgba(255,255,255,0.06), 0 0 40px rgba(0,240,255,0.01)",
                         border: "1px solid rgba(255,255,255,0.16)",
                       }}>
-                      <span className="absolute top-6 md:top-10 right-6 md:right-10 text-[10px] md:text-xs font-mono text-emerald-400/70">
+                      <span className="absolute top-6 md:top-10 min-[1700px]:top-12! right-6 md:right-10 min-[1700px]:right-12! text-[10px] md:text-xs min-[1700px]:text-lg! font-mono text-emerald-400/70">
                         {String(i + 1).padStart(2, "0")}
                       </span>
 
                       {/* Bottom amber accent */}
                       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[30%] h-[1px]"
                         style={{ background: "linear-gradient(90deg, transparent, rgba(253,230,138,0.08), transparent)" }} />
-                      <span className="text-[9px] md:text-[12px] font-mono text-amber-100/70 tracking-[0.3em] uppercase mb-4">{c.label}</span>
-                      <div className="w-8 md:w-12 h-[1px] mb-4"
+                      <span className="text-[9px] md:text-[12px] min-[1700px]:text-[14px]! font-mono text-amber-100/70 tracking-[0.3em] uppercase mb-4 min-[1700px]:mb-5!">{c.label}</span>
+                      <div className="w-8 md:w-12 min-[1700px]:w-16! h-[1px] mb-4 min-[1700px]:mb-5!"
                         style={{ background: "linear-gradient(90deg, rgba(0,240,255,0.15), rgba(253,230,138,0.2))" }} />
-                      <p className="text-[11px] md:text-[14px] text-white/60 leading-relaxed font-light max-w-[100%]">{c.text}</p>
+                      <p className="text-[11px] md:text-[14px] min-[1700px]:text-[17px]! text-white/60 leading-relaxed font-light max-w-[100%]">{c.text}</p>
                     </div>
                   ))}
                 </div>

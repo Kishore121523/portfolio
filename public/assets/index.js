@@ -4,7 +4,8 @@ export { default as wealthSimple } from "./WebDev/wealthSimple.png";
 export { default as wist } from "./WebDev/wist.png";
 export { default as nestle } from "./WebDev/nestle.png";
 export { default as vaultic } from "./WebDev/vaultic.png";
-export { default as allocatr } from "./WebDev/allocatr.png";
+export { default as finzo } from "./WebDev/finzo.png";
+export { default as ragPlayground } from "./WebDev/ragPlayground.png";
 
 export { default as a_GD } from "./GraphicDesign/a_GD.jpg";
 export { default as b_GD } from "./GraphicDesign/b_GD.jpg";

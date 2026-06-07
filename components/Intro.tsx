@@ -297,8 +297,9 @@ export default function HeroIntroText() {
         x: () => {
           const el = nameBlockRef.current;
           if (!el) return 0;
-          const maxW = Math.min(window.innerWidth - 48, 1152);
-          const gridLeft = (window.innerWidth - maxW) / 2 + 24;
+          // Align the name block's left edge with the "Somewhere between…" statement,
+          // which sits at left-[12%] of the viewport on desktop.
+          const gridLeft = window.innerWidth * 0.12;
           return gridLeft - window.innerWidth / 2 + (el.offsetWidth * 0.85) / 2;
         },
         y: () => {
@@ -455,13 +456,13 @@ export default function HeroIntroText() {
 
         {/* ── Role + Location row ── */}
         <div className="scatter-el absolute top-[15%] right-[8%] md:right-[12%] flex flex-col items-end gap-2">
-          <span className="text-sm text-white/30 font-mono tracking-wider">AI Engineer // Designer</span>
-          <div className="flex items-center gap-2.5">
-            <div className="relative w-2.5 h-2.5">
+          <span className="text-sm min-[1700px]:text-[17px]! text-white/30 font-mono tracking-wider">AI Engineer // Designer</span>
+          <div className="flex items-center gap-2.5 min-[1700px]:gap-3!">
+            <div className="relative w-2.5 h-2.5 min-[1700px]:w-3! min-[1700px]:h-3!">
               <div className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-40" />
               <div className="absolute inset-0 rounded-full bg-emerald-400" />
             </div>
-            <span className="text-sm text-white/50 font-mono uppercase tracking-wider">India</span>
+            <span className="text-sm min-[1700px]:text-[17px]! text-white/50 font-mono uppercase tracking-wider">India</span>
           </div>
         </div>
 
@@ -492,7 +493,7 @@ export default function HeroIntroText() {
 
 
         {/* ── Description Block ── */}
-        <div className="scatter-el absolute bottom-[8%] right-[6%] md:right-[8%] max-w-[320px] border-l border-white/10 pl-5">
+        <div className="scatter-el absolute bottom-[8%] right-[6%] md:right-[8%] max-w-[320px] min-[1700px]:max-w-[370px]! border-l border-white/10 pl-5">
           {/* ── Crosshair Targets ── */}
           <div className="crosshair absolute top-[-50%] right-[-5%] w-18 h-18 opacity-0">
             <svg viewBox="0 0 48 48" className="w-full h-full" stroke="rgba(253,230,138,0.9)" strokeWidth="0.5" fill="none">
@@ -504,7 +505,7 @@ export default function HeroIntroText() {
               <line x1="32" y1="24" x2="44" y2="24" />
             </svg>
           </div>
-          <p className="text-[16px] text-white/30 leading-relaxed font-light">
+          <p className="text-[16px] min-[1700px]:text-[18px]! text-white/30 leading-relaxed font-light">
             I work across the full stack. Next.js, Python, cloud,
             with a sharp focus on Generative AI and LangChain.
             I build RAG pipelines, AI-powered products, and
@@ -513,7 +514,7 @@ export default function HeroIntroText() {
         </div>
 
         {/* ── Social Links — Vertical Stack ── */}
-        <div className="absolute bottom-[15%] md:bottom-[45%] right-[6%] md:right-[10%] flex flex-col gap-3">
+        <div className="absolute bottom-[15%] md:bottom-[45%] right-[6%] md:right-[10%] flex flex-col gap-3 min-[1700px]:gap-4!">
           {[
             { href: "https://github.com/Kishore121523", icon: Github, label: "GH" },
             { href: "https://www.linkedin.com/in/kishore-yogeswaran-7946291a6/", icon: Linkedin, label: "LI" },
@@ -526,11 +527,11 @@ export default function HeroIntroText() {
               target={label !== "EM" ? "_blank" : undefined}
               rel="noreferrer"
               aria-label={label}
-              className="social-float group flex items-center gap-3 opacity-0"
+              className="social-float group flex items-center gap-3 min-[1700px]:gap-4! opacity-0"
             >
               <span className="text-[14px] text-white/20 font-mono tracking-widest group-hover:text-white/50 transition-colors duration-300">{label}</span>
-              <div className="w-11 h-11 rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-amber-100/30 group-hover:bg-amber-100/5 transition-all duration-300">
-                <Icon className="w-5 h-5 text-white/30 group-hover:text-amber-100 transition-colors duration-300" />
+              <div className="w-11 h-11 min-[1700px]:w-[52px]! min-[1700px]:h-[52px]! rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-amber-100/30 group-hover:bg-amber-100/5 transition-all duration-300">
+                <Icon className="w-5 h-5 min-[1700px]:w-6! min-[1700px]:h-6! text-white/30 group-hover:text-amber-100 transition-colors duration-300" />
               </div>
             </a>
           ))}

@@ -18,43 +18,51 @@ interface Project {
 
 const projects: Project[] = [
   {
-    tag: "where did my money go?",
-    title: "Allocatr",
-    desc: "AI-powered budget tracker with natural language expense entry and real-time analytics.",
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "/assets/WebDev/allocatr.png",
+    tag: "money, minus the dread",
+    title: "Finzo",
+    desc: "An intuitive financial management app - email reminders, calendar & dashboard views, and a spotlight-style search for effortless money management.",
+    liveUrl: "https://finzo-pi.vercel.app/",
+    githubUrl: "https://github.com/Kishore121523/finzo",
+    image: "/assets/WebDev/finzo.png",
+  },
+  {
+    tag: "which RAG wins?",
+    title: "RAG\nPlayground",
+    desc: "A hands-on playground to compare RAG strategies (Naive, Fusion, HyDE, Self-RAG, CRAG, Agentic and more) across your own datasets with live retrieval logs.",
+    liveUrl: "",
+    githubUrl: "https://github.com/Kishore121523/RAG_playground/",
+    image: "/assets/WebDev/ragPlayground.png",
   },
   {
     tag: "it talks back now",
     title: "Nestle AI Chatbot",
     desc: "AI Chatbot with Hybrid RAG, Graph Reasoning, and Geolocation-based Product Search.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "",
+    githubUrl: "https://github.com/Kishore121523/nestle_bot",
     image: "/assets/WebDev/nestle.png",
   },
   {
     tag: "goals that actually stick",
     title: "WIST",
     desc: "AI Enhanced Goal Planning System with Context Aware Suggestions.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://wist-neon.vercel.app/",
+    githubUrl: "https://github.com/Kishore121523/Wist",
     image: "/assets/WebDev/wist.png",
   },
   {
     tag: "ctrl+s but in the cloud",
     title: "Vaultic",
     desc: "A cloud storage solution for efficient file organization and secure sharing.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://vaultic.vercel.app/",
+    githubUrl: "https://github.com/Kishore121523/Vaultic",
     image: "/assets/WebDev/vaultic.png",
   },
   {
     tag: "monopoly but make it real",
     title: "WealthSimple",
     desc: "Modern Banking and real-time Money Transfer Website.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://wealthsimple-coral.vercel.app/",
+    githubUrl: "https://github.com/Kishore121523/WealthSimple",
     image: "/assets/WebDev/wealthSimple.png",
   },
 ];
@@ -504,7 +512,7 @@ export default function Work() {
               </div>
             </div>
             <div className="absolute bottom-3 right-3">
-              <span className="text-[9px] font-mono text-emerald-400/20 tracking-[0.3em] uppercase">STACK.DB</span>
+              <span className="text-[9px] font-mono text-emerald-400/20 tracking-[0.3em] uppercase">SKILLS.DB</span>
             </div>
           </div>
         </div>
@@ -583,33 +591,35 @@ export default function Work() {
               className="w-screen h-full flex items-center shrink-0 relative"
             >
               <div className="w-full px-[8%] md:px-[12%] flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-                <div className="max-w-[600px]">
-                  <span className={`work-project-item-${i} text-[10px] font-mono text-emerald-400/80 tracking-[0.3em] uppercase block mb-4`}>
+                <div className="max-w-[600px] min-[1700px]:max-w-[760px]!">
+                  <span className={`work-project-item-${i} text-[10px] min-[1700px]:text-[13px]! font-mono text-emerald-400/80 tracking-[0.3em] uppercase block mb-4 min-[1700px]:mb-5!`}>
                     {project.tag}
                   </span>
-                  <h3 className={`work-project-item-${i} text-[clamp(2rem,5vw,6rem)] font-extrabold text-amber-100 leading-[1] tracking-tight mb-4`}>
+                  <h3 className={`work-project-item-${i} text-[clamp(2rem,5vw,6rem)] font-extrabold text-amber-100 leading-[1] tracking-tight mb-4 whitespace-pre-line`}>
                     {project.title}
                   </h3>
-                  <div className={`work-project-item-${i} w-16 h-[1px] mb-5`}
+                  <div className={`work-project-item-${i} w-16 min-[1700px]:w-24! h-[1px] mb-5 min-[1700px]:mb-7!`}
                     style={{ background: "linear-gradient(90deg, rgba(16,185,129,0.4), rgba(253,230,138,0.2), transparent)" }} />
-                  <p className={`work-project-item-${i} text-amber-100/80 text-sm md:text-base leading-relaxed max-w-[440px] mb-8`}>
+                  <p className={`work-project-item-${i} text-amber-100/80 text-sm md:text-base min-[1700px]:text-[19px]! leading-relaxed max-w-[440px] min-[1700px]:max-w-[580px]! mb-8 min-[1700px]:mb-10!`}>
                     {project.desc}
                   </p>
                   <div className={`work-project-item-${i} flex items-center gap-4`}>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group flex items-center gap-2 border border-white/[0.08] px-5 py-2.5 rounded-full text-xs font-mono text-emerald-400/80 hover:border-amber-100/30 hover:text-amber-100 transition-all duration-300"
-                    >
-                      Live
-                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </a>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group flex items-center gap-2 min-[1700px]:gap-2.5! border border-white/[0.08] px-5 py-2.5 min-[1700px]:px-7! min-[1700px]:py-3.5! rounded-full text-xs min-[1700px]:text-sm! font-mono text-emerald-400/80 hover:border-amber-100/30 hover:text-amber-100 transition-all duration-300"
+                      >
+                        Live
+                        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </a>
+                    )}
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="group flex items-center gap-2 border border-white/[0.08] px-5 py-2.5 rounded-full text-xs font-mono text-emerald-400/80 hover:border-amber-100/30 hover:text-amber-100 transition-all duration-300"
+                      className="group flex items-center gap-2 min-[1700px]:gap-2.5! border border-white/[0.08] px-5 py-2.5 min-[1700px]:px-7! min-[1700px]:py-3.5! rounded-full text-xs min-[1700px]:text-sm! font-mono text-emerald-400/80 hover:border-amber-100/30 hover:text-amber-100 transition-all duration-300"
                     >
                       GitHub
                       <GitBranch className="w-3.5 h-3.5" />
@@ -619,7 +629,7 @@ export default function Work() {
                 {/* Project image with cursor-following glitch */}
                 <div className={`work-project-item-${i} relative`}>
                   <div
-                    className="project-img-wrap relative w-[320px] h-[230px] md:w-[500px] md:h-[360px]"
+                    className="project-img-wrap relative w-[320px] h-[230px] md:w-[500px] md:h-[360px] min-[1700px]:w-[680px]! min-[1700px]:h-[490px]!"
                     onMouseMove={(e) => {
                       const wrap = e.currentTarget;
                       const rect = wrap.getBoundingClientRect();

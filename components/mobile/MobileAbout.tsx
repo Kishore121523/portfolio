@@ -11,7 +11,7 @@ const circles = [
 ];
 
 const bioLines = [
-  "// fluent in Python, TypeScript & PromptScript!😛",
+  "// fluent in Python, TypeScript & PromptScript!",
   "// RAG, agents, fine-tuning — the usual suspects",
   "// ships code that works (most of the time)",
 ];

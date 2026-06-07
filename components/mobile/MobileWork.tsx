@@ -15,43 +15,51 @@ interface Project {
 
 const projects: Project[] = [
   {
-    tag: "where did my money go?",
-    title: "Allocatr",
-    desc: "AI-powered budget tracker with natural language expense entry and real-time analytics.",
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "/assets/WebDev/allocatr.png",
+    tag: "money, minus the dread",
+    title: "Finzo",
+    desc: "An intuitive financial management app — email reminders, calendar & dashboard views, and a spotlight-style search for effortless money management.",
+    liveUrl: "https://finzo-pi.vercel.app/",
+    githubUrl: "https://github.com/Kishore121523/finzo",
+    image: "/assets/WebDev/finzo.png",
+  },
+  {
+    tag: "which RAG wins?",
+    title: "RAG Playground",
+    desc: "A hands-on playground to compare RAG strategies (Naive, Fusion, HyDE, Self-RAG, CRAG, Agentic and more) across your own datasets with live retrieval logs.",
+    liveUrl: "",
+    githubUrl: "https://github.com/Kishore121523/RAG_playground/",
+    image: "/assets/WebDev/ragPlayground.png",
   },
   {
     tag: "it talks back now",
     title: "Nestle AI Chatbot",
     desc: "AI Chatbot with Hybrid RAG, Graph Reasoning, and Geolocation-based Product Search.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "",
+    githubUrl: "https://github.com/Kishore121523/nestle_bot",
     image: "/assets/WebDev/nestle.png",
   },
   {
     tag: "goals that actually stick",
     title: "WIST",
     desc: "AI Enhanced Goal Planning System with Context Aware Suggestions.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://wist-neon.vercel.app/",
+    githubUrl: "https://github.com/Kishore121523/Wist",
     image: "/assets/WebDev/wist.png",
   },
   {
     tag: "ctrl+s but in the cloud",
     title: "Vaultic",
     desc: "A cloud storage solution for efficient file organization and secure sharing.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://vaultic.vercel.app/",
+    githubUrl: "https://github.com/Kishore121523/Vaultic",
     image: "/assets/WebDev/vaultic.png",
   },
   {
     tag: "monopoly but make it real",
     title: "WealthSimple",
     desc: "Modern Banking and real-time Money Transfer Website.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://wealthsimple-coral.vercel.app/",
+    githubUrl: "https://github.com/Kishore121523/WealthSimple",
     image: "/assets/WebDev/wealthSimple.png",
   },
 ];
@@ -89,7 +97,7 @@ export default function MobileWork() {
             <span className="text-[10px] font-mono text-emerald-400/60 tracking-[0.4em] uppercase">
               // portfolio
             </span>
-            <h2 className="mt-3 text-[clamp(3rem,16vw,5rem)] font-extrabold text-amber-100 leading-[0.95] tracking-tight">
+            <h2 className="mt-3 text-[clamp(2.5rem,12vw,4rem)] font-extrabold text-amber-100 leading-[0.95] tracking-tight">
               W<span className="text-emerald-400">O</span>RK
             </h2>
           </div>
@@ -109,7 +117,7 @@ export default function MobileWork() {
         {projects.map((p, i) => (
           <article
             key={p.title}
-            className="snap-start shrink-0 w-[82%] rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden flex flex-col"
+            className="snap-start shrink-0 w-[calc(100vw-3rem)] rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden flex flex-col"
           >
             {/* Image */}
             <div className="relative">
@@ -152,14 +160,16 @@ export default function MobileWork() {
               />
               <p className="text-amber-100/70 text-[13.5px] leading-relaxed flex-1">{p.desc}</p>
               <div className="flex items-center gap-3 mt-5">
-                <a
-                  href={p.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 border border-white/[0.1] px-4 py-2 rounded-full text-xs font-mono text-emerald-400/80 active:border-amber-100/30 active:text-amber-100 transition-colors"
-                >
-                  Live <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
+                {p.liveUrl && (
+                  <a
+                    href={p.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 border border-white/[0.1] px-4 py-2 rounded-full text-xs font-mono text-emerald-400/80 active:border-amber-100/30 active:text-amber-100 transition-colors"
+                  >
+                    Live <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
                 <a
                   href={p.githubUrl}
                   target="_blank"
