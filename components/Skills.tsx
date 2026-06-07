@@ -437,7 +437,7 @@ export default function Skills() {
       >
 
         {/* Heading — cinematic staggered reveal */}
-        <div ref={headingRef} className="absolute top-[6.5%] left-0 right-0 text-center px-8 z-20" style={{ perspective: "800px" }}>
+        <div ref={headingRef} className="absolute top-[3.5%] left-0 right-0 text-center px-8 z-20" style={{ perspective: "800px" }}>
           <h2 className="leading-[1]" style={{ fontSize: "clamp(3rem, 9vw, 9rem)" }}>
             <span
               className="word-the inline-block text-amber-100/50 mr-[0.35em] mt-8"

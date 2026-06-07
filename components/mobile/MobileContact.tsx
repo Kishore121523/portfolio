@@ -4,7 +4,7 @@ import { Phone, Mail, Github, Linkedin, Instagram } from "lucide-react";
 import Reveal from "./Reveal";
 
 const cards = [
-  { href: "tel:+18073581508", icon: Phone, label: "Phone", value: "+1 (807) 358-1508" },
+  { href: "tel:+917373219696", icon: Phone, label: "Phone", value: "+91 7373219696" },
   { href: "mailto:kishore231512@gmail.com", icon: Mail, label: "Email", value: "kishore231512@gmail.com" },
 ];
 
