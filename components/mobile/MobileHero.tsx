@@ -223,11 +223,6 @@ export default function MobileHero() {
         </div>
       </div>
 
-      {/* Scroll hint */}
-      <div className="relative z-10 pb-12 flex flex-col items-center gap-2">
-        <span className="text-[9px] font-mono text-white/35 tracking-[0.3em] uppercase">scroll</span>
-        <span className="w-[1px] h-8 bg-gradient-to-b from-emerald-400/50 to-transparent" />
-      </div>
     </section>
   );
 }

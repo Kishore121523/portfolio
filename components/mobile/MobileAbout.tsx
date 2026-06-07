@@ -68,7 +68,7 @@ export default function MobileAbout() {
   };
 
   return (
-    <section id="about" className="relative bg-background px-6 pt-8 pb-12 scroll-mt-24">
+    <section id="about" className="relative bg-background px-6 pt-8 pb-8 scroll-mt-24">
       {/* Heading — clean, stacked */}
       <Reveal>
         <span className="text-[10px] font-mono text-emerald-400/60 tracking-[0.4em] uppercase">

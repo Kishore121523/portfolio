@@ -118,7 +118,7 @@ export default function MobileSkills() {
   };
 
   return (
-    <section id="skills" className="relative bg-background pt-8 pb-12 scroll-mt-24">
+    <section id="skills" className="relative bg-background pt-8 pb-8 scroll-mt-24">
       {/* Heading — left aligned, editorial */}
       <Reveal className="px-6 mb-6">
         <div className="flex items-center justify-between mb-4">

@@ -82,7 +82,7 @@ export default function MobileWork() {
   };
 
   return (
-    <section id="work" className="relative bg-background pt-8 pb-12 scroll-mt-24">
+    <section id="work" className="relative bg-background pt-8 pb-8 scroll-mt-24">
       <Reveal className="px-6">
         <div className="flex items-end justify-between">
           <div>
